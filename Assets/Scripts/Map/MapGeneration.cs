@@ -7,6 +7,8 @@ public class MapGeneration : MonoBehaviour
     public GameObject[][] chunk_loc = new GameObject[3][];
     private Dictionary<GameObject, List<GameObject>> resourcePool;
     private readonly int resource_amount = Upgraded.resourceSpawn;
+    private readonly int veinRate = 25;
+    private readonly float veinSize = 0.05f;
     public readonly float chunk_size = 120;
     void Awake()
     {
@@ -43,9 +45,29 @@ public class MapGeneration : MonoBehaviour
     {
         for (int i = 0; i < resource_amount; i++)
         {
-            resourcePool[the_chunk][i].transform.localPosition = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
-            resourcePool[the_chunk][i].SetActive(true);
+            GameObject currResource = resourcePool[the_chunk][i];
+            if (i % veinRate == 0)
+            {
+                for (int k = i; k < i + 7; k++)
+                {
+                    GameObject currResource2 = resourcePool[the_chunk][k];
+                    if (k >= resource_amount)
+                    {
+                        break;
+                    }
+                    ResourceActivate(currResource2);
+                    currResource2.transform.localPosition = new Vector2(currResource.transform.localPosition.x + Random.Range(0, veinSize), currResource.transform.localPosition.y + Random.Range(0, veinSize));
+                }
+                i += 6;
+                continue;
+            }
+            ResourceActivate(currResource);
         }
+    }
+    private void ResourceActivate(GameObject givenResource)
+    {
+        givenResource.transform.localPosition = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+        givenResource.SetActive(true);
     }
 
 }

@@ -13,7 +13,7 @@ public class MenuUpgrade : MonoBehaviour
     }
     public void Play()
     {
-        SceneManager.LoadScene("Main Map");
+        SceneManager.LoadScene(0);
     }
     public void GoToUpgrades()
     {

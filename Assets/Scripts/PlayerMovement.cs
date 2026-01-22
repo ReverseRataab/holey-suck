@@ -1,8 +1,6 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -10,12 +8,17 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveInput;
     public bool suckActive;
     private readonly float accel = 15000f;
-    public Currency currency;
     private GameObject radius;
     private Rigidbody2D rb;
+    private GameObject gameUI;
+    private GameObject gameOverUI;
 
     void Awake()
     {
+        Application.targetFrameRate = 60;
+        gameUI = GameObject.Find("Game UI");
+        gameOverUI = GameObject.Find("Game Over UI");
+        gameOverUI.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
         radius = GameObject.FindGameObjectWithTag("Radius");
         radius.transform.localScale = new Vector2(Upgraded.suckRadius, Upgraded.suckRadius);
@@ -73,10 +76,16 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D item)
     {
         //Check if its a Resource and add the points
-        if (item.CompareTag("Resource"))
+        if (item.GetComponent<ResourceMovement>())
         {
-            currency.AddMoney(1);
+            Currency.AddMoney(1);
             item.gameObject.SetActive(false);
+        }
+        else if (item.GetComponent<BigBoss>())
+        {
+            gameUI.SetActive(false);
+            gameOverUI.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 }
