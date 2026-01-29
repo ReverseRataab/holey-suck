@@ -27,15 +27,31 @@ public class MenuUpgrade : MonoBehaviour
     }
     public void UpgradeRadius()
     {
-        Upgraded.suckRadius += 20;
+        Upgraded.suckRadius += 5;
     }
     public void UpgradePower()
     {
-        Upgraded.suckPower += 2;
+        Upgraded.suckPower += 5;
+    }
+    public void UpgradeStamina()
+    {
+        Upgraded.suckStamina += 0.5f;
+    }
+    public void UpgradeStaminaRegen()
+    {
+        Upgraded.staminaRegen /= 1.2f;
+    }
+    public void UpgradeDistance()
+    {
+        Upgraded.bossDistance += 100;
+    }
+    public void UpgradeResource()
+    {
+        Upgraded.resourceMultiplier += 0.1f;
     }
     public void UpgradeSpeed()
     {
-        Upgraded.movementSpeed += 5;
+        Upgraded.movementSpeed += 2;
     }
     public void UpgradeResourceSpawn()
     {

@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class Currency : MonoBehaviour
 {
-    static int money;
-    public static void AddMoney(int amount)
+    static float money;
+    public static void AddMoney(float amount)
     {
         money += amount;
     }
-    public static void SubtractMoney(int amount)
+    public static void SubtractMoney(float amount)
     {
         money -= amount;
     }
-    public static int GetMoney()
+    public static float GetMoney()
     {
-        return money;
+        return Mathf.Floor(money);
     }
 }

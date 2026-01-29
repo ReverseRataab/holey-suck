@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 5841371891729725802}
   - component: {fileID: 6037179303210207486}
   - component: {fileID: 5885481655459251732}
-  - component: {fileID: 2060359250227498502}
   - component: {fileID: 6441451945414854132}
   m_Layer: 0
   m_Name: Player
@@ -264,18 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   suckActive: 0
---- !u!114 &2060359250227498502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5461341101397576266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1425f264f94044c5fa379549eaf8eb8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Currency
+  abilityActive: 0
 --- !u!114 &6441451945414854132
 MonoBehaviour:
   m_ObjectHideFlags: 0
